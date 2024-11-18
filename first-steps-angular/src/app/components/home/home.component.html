@@ -1,0 +1,34 @@
+<app-footer></app-footer>
+
+<h1>{{ name() }}</h1>
+
+<img [src]="bikeUrl" />
+
+<h2> {{ contador() }} <button (click)="myFunction()">Click aqui!</button></h2>
+
+<h2><input type="text" (change)="printContent()"></h2>
+
+<h2><button (click)="printContent()">Contador</button></h2>
+
+
+@if (boolean) {
+    <h3>O valor é true</h3>
+}@else if(contador() == 2) {
+    <h3>O valor do contador é {{contador()}}</h3>
+}@else {
+    <h3>O valor é false</h3>
+}
+
+<h3 *ngIf="boolean">O valor é true</h3>
+
+@for (item of list; track item) {
+    <h2>{{ item }}</h2>
+}@empty {
+    <h2>Lista vazia</h2>
+}
+
+
+<div *ngFor="let item of list">
+    <h5>{{ item }}</h5>    
+</div>
+<h5 *ngIf="list.length == 0">Lista vazia</h5>
