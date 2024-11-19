@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { FooterModule } from '../footer/footer.module';
 import { CommonModule } from '@angular/common';
+import { HelloWorldService } from '../../services/hello-world.service';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,22 @@ export class HomeComponent {
   contador = signal(0);
   boolean = false;
   list = ["Calixto", "Rosy", "Lucca", "Thamyres"];
+
+  constructor(private service: HelloWorldService) {
+    this.service.getHelloWorld().subscribe(
+      {
+       next: (data) => {
+          console.log(data);
+        },
+        error: (error) => {
+          console.error("Erro ao chamar a API: ", error);
+        },
+        complete: () => {
+          console.log("OK")
+        }
+      }
+    );
+  }
 
   myFunction() {
     console.log(this.name);
