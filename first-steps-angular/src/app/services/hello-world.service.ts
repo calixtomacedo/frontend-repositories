@@ -7,12 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class HelloWorldService {
 
-  private apiUrl = 'https://cat-fact.herokuapp.com/facts';
+  private apiPersonUrl = 'http://192.168.15.100:8081/person';
+  //private apiPersonUrl = 'http://localhost:8080/person';
 
   constructor(private client: HttpClient) { }
 
   getHelloWorld(): Observable<any> {
-    return this.client.get(this.apiUrl)
+    return this.client.get(this.apiPersonUrl)
   }
   
 }
